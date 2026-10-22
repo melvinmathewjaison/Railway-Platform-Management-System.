@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Railway Platform Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p class="eyebrow">DATA STRUCTURES MINI PROJECT</p>
+    <h1>Railway Platform Management</h1>
+    <p>Manage train queues with FIFO and priority-based processing.</p>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Add a train</h2>
+      <form id="train-form">
+        <label>Train number <input id="train-number" required maxlength="12" placeholder="e.g. 12601"></label>
+        <label>Train name <input id="train-name" required maxlength="50" placeholder="e.g. Express"></label>
+        <label>Queue type
+          <select id="queue-type">
+            <option value="normal">Normal FIFO queue</option>
+            <option value="priority">Priority queue</option>
+          </select>
+        </label>
+        <label>Priority
+          <select id="priority">
+            <option value="1">High / Emergency</option>
+            <option value="2">Medium / Special</option>
+            <option value="3" selected>Normal</option>
+          </select>
+        </label>
+        <button type="submit">Add train</button>
+      </form>
+      <p id="message" role="status" aria-live="polite">Ready.</p>
+    </section>
+    <section class="lists">
+      <article class="panel">
+        <h2>Normal queue <span class="pill" id="normal-count">0</span></h2>
+        <p class="hint">First-In-First-Out (FIFO)</p>
+        <ol id="normal-list" class="train-list"></ol>
+        <button id="process-normal" class="secondary">Allocate next (FIFO)</button>
+      </article>
+      <article class="panel">
+        <h2>Priority queue <span class="pill" id="priority-count">0</span></h2>
+        <p class="hint">High priority is processed first</p>
+        <ol id="priority-list" class="train-list"></ol>
+        <button id="process-priority" class="secondary">Process highest priority</button>
+      </article>
+    </section>
+  </main>
+  <footer>Educational prototype only — not connected to railway operations.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
